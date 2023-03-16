@@ -1,0 +1,18 @@
+{
+    "firstName" : "Claus",
+    "lastName" : "Trusdale",
+    "userEmail" : "claus.trusdale@live.com",
+    "userGender" : "Male",
+    "userMobile" : "8199999999",
+    "birthDate" : "1995-12-27",
+    "subjects" : [
+        "Maths",
+        "English",
+        "Computer Science"
+    ],
+    "hobbies" : [
+        "Sports",
+        "Reading",
+        "Music"
+    ]
+}
