@@ -14,5 +14,9 @@
         "Sports",
         "Reading",
         "Music"
-    ]
+    ],
+    "image" : "/Users/lucasmendes/Projects/cypress-learning-lucas/cypress/downloads/example.jpeg",
+    "address" : "555 Aurora Street, Zipcode 500000",
+    "state" : "NCR",
+    "city" : "Delhi"
 }

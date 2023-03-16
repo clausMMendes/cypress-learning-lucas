@@ -16,6 +16,16 @@ class formPage{
         userSubjectInput : () => cy.get('#subjectsInput'),
 
         userHobbies : () => cy.get('.custom-control-label'),
+
+        userImage : () => cy.get('#uploadPicture'),
+
+        userAddress : () => cy.get('#currentAddress'),
+
+        userState : () => cy.get('#state'),
+
+        userCity : () => cy.get('#city'),
+
+        submitButton : () => cy.get('#submit')
     };
 
     visitPage(){
@@ -33,6 +43,7 @@ class formPage{
     fillUserEmail(email){
         this.elements.userEmail().type(email);
     }
+
     // Genders can be ["Male","Female", "Other"]
     fillGender(gender){
         this.elements.userGender().contains(gender).click();
@@ -72,6 +83,31 @@ class formPage{
         }
     }
 
+    uploadUserImage(imagePath){
+        this.elements.userImage().selectFile(imagePath);
+    }
+
+    fillAddress(address){
+        this.elements.userAddress().type(address);
+    }
+
+    fillState(state){
+        this.elements.userState().click();
+        cy.get('.css-11unzgr*')
+            .contains(state)
+            .click();
+    }
+
+    fillCity(city){
+        this.elements.userCity().click();
+        cy.get('.css-11unzgr*')
+            .contains(city)
+            .click();
+    }
+
+    submitForm(){
+        this.elements.submitButton().click({force: true});
+    }
 }
 
 module.exports = new formPage()

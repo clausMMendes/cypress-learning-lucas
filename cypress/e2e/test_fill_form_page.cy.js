@@ -15,8 +15,6 @@ describe("Form Fill Automation", () => {
           })
     })
 
-    
-
     it("Should fill the Form Page", () => {
         formPage.fillFistName(formData.firstName);
         
@@ -33,5 +31,15 @@ describe("Form Fill Automation", () => {
         formPage.fillSubjects(formData.subjects);
 
         formPage.fillHobbies(formData.hobbies);
+
+        formPage.uploadUserImage(formData.image);
+
+        formPage.fillAddress(formData.address);
+
+        formPage.fillState(formData.state);
+
+        formPage.fillCity(formData.city);
+
+        formPage.submitForm();
     })
 })
