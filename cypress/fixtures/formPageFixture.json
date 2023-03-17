@@ -1,9 +1,9 @@
 {
     "firstName" : "Claus",
     "lastName" : "Trusdale",
-    "userEmail" : "claus.trusdale@live.com",
-    "userGender" : "Male",
-    "userMobile" : "8199999999",
+    "email" : "claus.trusdale@live.com",
+    "gender" : "Male",
+    "mobile" : "8199999999",
     "birthDate" : "1995-12-27",
     "subjects" : [
         "Maths",

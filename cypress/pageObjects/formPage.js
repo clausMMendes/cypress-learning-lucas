@@ -1,31 +1,33 @@
 class formPage{
     elements = {
         
-        firstName : () => cy.get('#firstName'),
+        firstNameInput : () => cy.get('#firstName'),
         
-        lastName : () => cy.get('#lastName'),
+        lastNameInput : () => cy.get('#lastName'),
         
-        userEmail : () => cy.get('#userEmail'),
+        userEmailInput : () => cy.get('#userEmail'),
 
-        userGender : () => cy.get('.custom-control-label'),
+        userGenderRadio : () => cy.get('.custom-control-label'),
 
-        userMobile : () => cy.get('#userNumber'),
+        userMobileInput : () => cy.get('#userNumber'),
 
         userBirthDateInput : () => cy.get('.react-datepicker__input-container'),
 
-        userSubjectInput : () => cy.get('#subjectsInput'),
+        userSubjectsInput : () => cy.get('#subjectsInput'),
 
-        userHobbies : () => cy.get('.custom-control-label'),
+        userHobbiesCheckbox : () => cy.get('.custom-control-label'),
 
-        userImage : () => cy.get('#uploadPicture'),
+        userImageButton : () => cy.get('#uploadPicture'),
 
-        userAddress : () => cy.get('#currentAddress'),
+        userAddressInput : () => cy.get('#currentAddress'),
 
-        userState : () => cy.get('#state'),
+        userStateSelector : () => cy.get('#state'),
 
-        userCity : () => cy.get('#city'),
+        userCitySelector : () => cy.get('#city'),
 
-        submitButton : () => cy.get('#submit')
+        submitButton : () => cy.get('#submit'),
+
+        formResultsTable : () => cy.get('.modal-body*')
     };
 
     visitPage(){
@@ -33,24 +35,24 @@ class formPage{
     }
 
     fillFistName(firstName){
-        this.elements.firstName().type(firstName);
+        this.elements.firstNameInput().type(firstName);
     }
 
     fillLastName(lastName){
-        this.elements.lastName().type(lastName);
+        this.elements.lastNameInput().type(lastName);
     }
 
     fillUserEmail(email){
-        this.elements.userEmail().type(email);
+        this.elements.userEmailInput().type(email);
     }
 
     // Genders can be ["Male","Female", "Other"]
     fillGender(gender){
-        this.elements.userGender().contains(gender).click();
+        this.elements.userGenderRadio().contains(gender).click();
     }
 
     fillMobile(mobile){
-        this.elements.userMobile().type(mobile);
+        this.elements.userMobileInput().type(mobile);
     }
 
     fillDate(date){
@@ -68,7 +70,7 @@ class formPage{
 
     fillSubjects(subjects){
         for(let subject of subjects){
-            this.elements.userSubjectInput().type(subject);
+            this.elements.userSubjectsInput().type(subject);
             cy.get('.subjects-auto-complete__menu')
                 .contains(subject)
                 .click();
@@ -77,29 +79,29 @@ class formPage{
 
     fillHobbies(hobbies){
         for(let hobbie of hobbies){
-            this.elements.userHobbies()
+            this.elements.userHobbiesCheckbox()
                 .contains(hobbie)
                 .click();
         }
     }
 
     uploadUserImage(imagePath){
-        this.elements.userImage().selectFile(imagePath);
+        this.elements.userImageButton().selectFile(imagePath);
     }
 
     fillAddress(address){
-        this.elements.userAddress().type(address);
+        this.elements.userAddressInput().type(address);
     }
 
     fillState(state){
-        this.elements.userState().click();
+        this.elements.userStateSelector().click();
         cy.get('.css-11unzgr*')
             .contains(state)
             .click();
     }
 
     fillCity(city){
-        this.elements.userCity().click();
+        this.elements.userCitySelector().click();
         cy.get('.css-11unzgr*')
             .contains(city)
             .click();
@@ -107,6 +109,10 @@ class formPage{
 
     submitForm(){
         this.elements.submitButton().click({force: true});
+    }
+
+    getResultsTable(){
+        return this.elements.formResultsTable();
     }
 }
 

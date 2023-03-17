@@ -1,4 +1,4 @@
-import formPage, { fillFistName, fillLastName, fillUserEmail } from "../pageObjects/formPage";
+import formPage, { fillFistName, fillLastName, fillUserEmail, getResultsTable } from "../pageObjects/formPage";
 
 
 describe("Form Fill Automation", () => {
@@ -20,11 +20,11 @@ describe("Form Fill Automation", () => {
         
         formPage.fillLastName(formData.lastName);
 
-        formPage.fillUserEmail(formData.userEmail);
+        formPage.fillUserEmail(formData.email);
 
-        formPage.fillGender(formData.userGender);
+        formPage.fillGender(formData.gender);
 
-        formPage.fillMobile(formData.userMobile);
+        formPage.fillMobile(formData.mobile);
 
         formPage.fillDate(formData.birthDate);
 
@@ -41,5 +41,42 @@ describe("Form Fill Automation", () => {
         formPage.fillCity(formData.city);
 
         formPage.submitForm();
+
+        // Asserts the User Name
+        formPage.getResultsTable()
+            .contains(`${formData.firstName} ${formData.lastName}`) 
+            .should("be.visible");
+
+        // Asserts the User Email
+        formPage.getResultsTable()
+            .contains(`${formData.email}`)
+            .should("be.visible");
+
+        // Asserts the User Gender
+        formPage.getResultsTable()
+            .contains(`${formData.gender}`)
+            .should("be.visible");
+
+        // Asserts the User Mobile
+        formPage.getResultsTable()
+            .contains(`${formData.mobile}`)
+            .should("be.visible");
+        
+        let date = new Date(formData.birthDate);
+        formPage.getResultsTable()
+            .contains(`${date.getDate()} ${date.toLocaleString("default", { month: "long" })},${date.getFullYear()}`)
+            .should("be.visible")
+
+        for(let subject of formData.subjects){
+            formPage.getResultsTable()
+                .contains(subject)
+                .should("be.visible");
+        }
+
+        for(let hobbie  of formData.hobbies){
+            formPage.getResultsTable()
+                .contains(hobbie)
+                .should("be.visible");
+        }
     })
 })
