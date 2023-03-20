@@ -73,10 +73,12 @@ describe("Form Fill Automation", () => {
                 .should("be.visible");
         }
 
-        for(let hobbie  of formData.hobbies){
+        for(let hobbie of formData.hobbies){
             formPage.getResultsTable()
                 .contains(hobbie)
                 .should("be.visible");
         }
+
+
     })
 })
